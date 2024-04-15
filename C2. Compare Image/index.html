@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compare Image</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <main>
+        <div class="container">
+            <div class="image-container">
+                <img class="image-before slider-image" src="./images/before.jpg" alt="color photo" />
+                <img class="image-after slider-image" src="./images/before.jpg" alt="black and white" />
+            </div>
+            <!-- step="10" -->
+            <input type="range" min="0" max="100" value="50" aria-label="Percentage of before photo shown"
+                class="slider" />
+            <div class="slider-line" aria-hidden="true"></div>
+            <div class="slider-button" aria-hidden="true"></div>
+        </div>
+    </main>
+
+    <script>
+        const container = document.querySelector('.container');
+        const slider = document.querySelector('.slider');
+        slider.addEventListener('input', (e) => {
+            container.style.setProperty('--position', `${e.target.value}%`);
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,16 @@
+{
+    "en": {
+        "hello": "Hello",
+        "world": "World",
+        "welcome": "Welcome"
+    },
+    "fr": {
+        "hello": "Bonjour",
+        "world": "Monde"
+    },
+    "id": {
+        "hello": "Halo",
+        "world": "Dunia",
+        "welcome": "Selamat datang"
+    }
+}

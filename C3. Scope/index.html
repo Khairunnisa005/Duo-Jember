@@ -1,0 +1,89 @@
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Scope</title>
+        <style>
+            body {
+                overflow: hidden;
+                margin: 0;
+                padding: 0;
+            }
+
+            #scope {
+                width: 400px;
+                height: 400px;
+                position: absolute;
+                z-index: 10;
+                cursor: move;
+            }
+
+            .box {
+                width: 100vw;
+                height: 100vh;
+                position: absolute;
+                background-color: black;
+            }
+
+            .text {
+                height: 100dvh;
+                display: flex;
+                align-items: center;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="" id="scope"></div>
+        <div class="box top"></div>
+        <div class="box left"></div>
+        <div class="box bottom"></div>
+        <div class="box right"></div>
+        <div class="text">
+            <h1>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis quisquam minus suscipit! Numquam neque
+                eum quasi molestias molestiae cum minus ex itaque, velit quo doloremque fugit inventore dicta rem impedit?
+            </h1>
+        </div>
+
+        <script>
+            const scope = document.getElementById("scope");
+            const btop = document.querySelector(".top");
+            const right = document.querySelector(".right");
+            const bottom = document.querySelector(".bottom");
+            const left = document.querySelector(".left");
+            let onDrag = false;
+
+            document.addEventListener("mouseup", (e) => {
+                onDrag = false;
+            });
+
+            scope.addEventListener("mousedown", (e) => {
+                onDrag = true;
+            });
+
+            scope.addEventListener("mousemove", (e) => {
+                if (onDrag) {
+                    console.log(e.clientX, e.clientY);
+                    move(e.clientX, e.clientY);
+                }
+            });
+
+            move(10, 10);
+            
+            function move(x, y) {
+                scope.style.left = x - scope.offsetWidth / 2 + "px";
+                scope.style.top = y - scope.offsetHeight / 2 + "px";
+
+                btop.style.top = scope.offsetTop - btop.offsetHeight + "px";
+                right.style.left = scope.offsetWidth + scope.offsetLeft + "px";
+                bottom.style.top = scope.offsetHeight + scope.offsetTop + "px";
+                left.style.left = scope.offsetLeft - left.offsetWidth + "px";
+            }
+
+        </script>
+    </body>
+
+    </html>
